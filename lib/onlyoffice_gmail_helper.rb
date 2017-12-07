@@ -1,4 +1,5 @@
 require 'gmail'
+require 'onlyoffice_logger_helper'
 require 'onlyoffice_gmail_helper/email_account'
 require 'onlyoffice_gmail_helper/version'
 
@@ -169,7 +170,7 @@ module OnlyofficeGmailHelper
         messages_array = mailbox.emails(:unread, search: current_portal_full_name.to_s)
         messages_array.each do |current_mail|
           next unless message_found?(current_mail.message.subject, message.title)
-          LoggerHelper.print_to_log('Email successfully found and removed')
+          OnlyofficeLoggerHelper.log('Email successfully found and removed')
           current_mail.delete!
           return true
         end
@@ -214,20 +215,20 @@ module OnlyofficeGmailHelper
     end
 
     def delete_all_messages
-      LoggerHelper.print_to_log("Start deleting all messaged on mail: #{@user}")
+      OnlyofficeLoggerHelper.log("Start deleting all messaged on mail: #{@user}")
       mailbox.emails.each(&:delete!)
       @gmail.logout
-      LoggerHelper.print_to_log("Finished deleting all messaged on mail: #{@user}")
+      OnlyofficeLoggerHelper.log("Finished deleting all messaged on mail: #{@user}")
     end
 
     def archive_inbox
-      LoggerHelper.print_to_log("Start achieving  all messaged in inbox on mail: #{@user}")
+      OnlyofficeLoggerHelper.log("Start achieving  all messaged in inbox on mail: #{@user}")
       @gmail.inbox.emails.each(&:archive!) if mail_inbox_count.nonzero?
-      LoggerHelper.print_to_log("Finished achieving  all messaged in inbox on mail: #{@user}")
+      OnlyofficeLoggerHelper.log("Finished achieving  all messaged in inbox on mail: #{@user}")
     end
 
     def delete_all_message_contains(contain_string)
-      LoggerHelper.print_to_log("Messages containing #{contain_string} will be deleted")
+      OnlyofficeLoggerHelper.log("Messages containing #{contain_string} will be deleted")
       messages_array = mailbox.emails(:unread, search: contain_string)
       messages_array.each(&:delete!)
     end
@@ -263,7 +264,7 @@ module OnlyofficeGmailHelper
         add_file attachment unless attachment.nil?
       end
       email.deliver!
-      LoggerHelper.print_to_log("send_mail(#{email}, #{title}, #{body}, #{attachment})")
+      OnlyofficeLoggerHelper.log("send_mail(#{email}, #{title}, #{body}, #{attachment})")
     end
 
     def send_notification(email, test_name, error, mail_title = 'Teamlab Daily Check')
@@ -275,7 +276,7 @@ module OnlyofficeGmailHelper
 
     def mail_inbox_count
       count = @gmail.inbox.emails.count
-      LoggerHelper.print_to_log("#{count} mails in inbox of #{@user}")
+      OnlyofficeLoggerHelper.log("#{count} mails in inbox of #{@user}")
       count
     end
 
