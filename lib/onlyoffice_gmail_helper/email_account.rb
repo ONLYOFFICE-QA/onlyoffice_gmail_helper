@@ -3,7 +3,7 @@ require_relative 'email_account/mail_account'
 module OnlyofficeGmailHelper
   class EmailAccount
     def self.read_defaults
-      return if read_env_defaults
+      return read_env_defaults if read_env_defaults
       yaml = YAML.load_file(Dir.home + '/.gem-onlyoffice_gmail_helper/config.yml')
       { user: yaml['user'], password: yaml['password'] }
     rescue Errno::ENOENT
