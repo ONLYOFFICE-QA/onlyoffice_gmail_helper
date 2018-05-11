@@ -43,11 +43,6 @@ Naming/ClassAndModuleCamelCase:
   Exclude:
     - 'lib/onlyoffice_gmail_helper.rb'
 
-# Offense count: 1
-Style/CommentedKeyword:
-  Exclude:
-    - 'lib/onlyoffice_gmail_helper.rb'
-
 # Offense count: 4
 Style/Documentation:
   Exclude:
