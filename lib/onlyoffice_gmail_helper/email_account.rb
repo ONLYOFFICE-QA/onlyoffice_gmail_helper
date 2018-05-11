@@ -17,5 +17,5 @@ module OnlyofficeGmailHelper
     end
 
     GMAIL_DEFAULT = MailAccount.new(read_defaults[:user], read_defaults[:password])
-   end
+  end
 end
