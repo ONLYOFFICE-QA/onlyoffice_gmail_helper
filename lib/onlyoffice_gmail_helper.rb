@@ -42,7 +42,7 @@ module OnlyofficeGmailHelper
     def logout
       @gmail.logout
       @imap.disconnect until @imap.disconnected?
-    rescue
+    rescue StandardError
       Exception
     end
 
@@ -81,7 +81,7 @@ module OnlyofficeGmailHelper
           if a || b
             current_subject = begin
               current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-            rescue
+            rescue StandardError
               Exception
             end
             if current_subject == 'Welcome to Your TeamLab Portal!'
@@ -112,7 +112,7 @@ module OnlyofficeGmailHelper
           next unless message_found?(current_mail.message.subject, subject)
           body = begin
             current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-          rescue
+          rescue StandardError
             Exception
           end
           current_mail.delete! if delete
@@ -130,7 +130,7 @@ module OnlyofficeGmailHelper
         current_subject = begin
           current_mail.html_part.body.decoded
                       .force_encoding('utf-8').encode('UTF-8')
-        rescue
+        rescue StandardError
           Exception
         end
         current_mail.mark(:unread)
@@ -189,7 +189,7 @@ module OnlyofficeGmailHelper
           else
             begin
               current_mail.mark(:unread)
-            rescue
+            rescue StandardError
               Exception
             end
           end
@@ -206,7 +206,7 @@ module OnlyofficeGmailHelper
           else
             begin
               current_mail.mark(:unread)
-            rescue
+            rescue StandardError
               Exception
             end
           end
@@ -287,7 +287,7 @@ module OnlyofficeGmailHelper
         current_subject = begin
           current_mail.html_part.body.decoded
                       .force_encoding('utf-8').encode('UTF-8')
-        rescue
+        rescue StandardError
           Exception
         end
         reply_to = current_mail.reply_to[0] unless current_mail.reply_to.nil?
@@ -348,7 +348,7 @@ module OnlyofficeGmailHelper
         current_title = current_mail.message.subject
         current_subject = begin
           current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-        rescue
+        rescue StandardError
           Exception
         end
         current_mail.mark(:unread)

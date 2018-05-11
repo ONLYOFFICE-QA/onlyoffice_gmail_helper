@@ -69,14 +69,6 @@ Style/IfUnlessModifier:
   Exclude:
     - 'lib/onlyoffice_gmail_helper.rb'
 
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: implicit, explicit
-Style/RescueStandardError:
-  Exclude:
-    - 'lib/onlyoffice_gmail_helper.rb'
-
 # Offense count: 30
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
