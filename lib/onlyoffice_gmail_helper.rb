@@ -1,6 +1,7 @@
 require 'gmail'
 require 'onlyoffice_logger_helper'
 require 'onlyoffice_gmail_helper/email_account'
+require 'onlyoffice_gmail_helper/mail_message'
 require 'onlyoffice_gmail_helper/version'
 
 class Object
