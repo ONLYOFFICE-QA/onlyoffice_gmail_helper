@@ -84,17 +84,13 @@ module OnlyofficeGmailHelper
             rescue StandardError
               Exception
             end
-            if current_subject == 'Welcome to Your TeamLab Portal!'
-              current_mail.delete!
-            end
+            current_mail.delete! if current_subject == 'Welcome to Your TeamLab Portal!'
             if current_subject.include? current_portal_full
               current_mail.delete! if delete
               return current_subject
             end
           else
-            if attempt == 10
-              raise 'Message with title: ' + title1 + ' not found after ' + attempt.to_s + ' attempt'
-            end
+            raise 'Message with title: ' + title1 + ' not found after ' + attempt.to_s + ' attempt' if attempt == 10
             sleep 10
             attempt += 1
             current_mail.delete! if delete

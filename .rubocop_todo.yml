@@ -63,12 +63,6 @@ Style/ExpandPathArguments:
   Exclude:
     - 'onlyoffice_gmail_helper.gemspec'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'lib/onlyoffice_gmail_helper.rb'
-
 # Offense count: 30
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
