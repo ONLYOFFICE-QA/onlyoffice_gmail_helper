@@ -163,8 +163,8 @@ module OnlyofficeGmailHelper
       false
     end
 
-    def check_messages_for_message_with_portal_address(message, current_portal_full_name)
-      300.times do
+    def check_messages_for_message_with_portal_address(message, current_portal_full_name, times: 300)
+      times.times do
         messages_array = mailbox.emails(:unread, search: current_portal_full_name.to_s)
         messages_array.each do |current_mail|
           next unless message_found?(current_mail.message.subject, message.title)
