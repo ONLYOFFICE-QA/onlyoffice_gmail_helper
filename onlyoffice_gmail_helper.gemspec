@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift File.expand_path('lib', __dir__)
 require 'onlyoffice_gmail_helper/version'
 Gem::Specification.new do |s|
   s.name = 'onlyoffice_gmail_helper'

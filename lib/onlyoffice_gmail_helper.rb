@@ -42,7 +42,7 @@ module OnlyofficeGmailHelper
     def logout
       @gmail.logout
       @imap.disconnect until @imap.disconnected?
-    rescue
+    rescue StandardError
       Exception
     end
 
@@ -81,20 +81,16 @@ module OnlyofficeGmailHelper
           if a || b
             current_subject = begin
               current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-            rescue
+            rescue StandardError
               Exception
             end
-            if current_subject == 'Welcome to Your TeamLab Portal!'
-              current_mail.delete!
-            end
+            current_mail.delete! if current_subject == 'Welcome to Your TeamLab Portal!'
             if current_subject.include? current_portal_full
               current_mail.delete! if delete
               return current_subject
             end
           else
-            if attempt == 10
-              raise 'Message with title: ' + title1 + ' not found after ' + attempt.to_s + ' attempt'
-            end
+            raise 'Message with title: ' + title1 + ' not found after ' + attempt.to_s + ' attempt' if attempt == 10
             sleep 10
             attempt += 1
             current_mail.delete! if delete
@@ -112,7 +108,7 @@ module OnlyofficeGmailHelper
           next unless message_found?(current_mail.message.subject, subject)
           body = begin
             current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-          rescue
+          rescue StandardError
             Exception
           end
           current_mail.delete! if delete
@@ -130,7 +126,7 @@ module OnlyofficeGmailHelper
         current_subject = begin
           current_mail.html_part.body.decoded
                       .force_encoding('utf-8').encode('UTF-8')
-        rescue
+        rescue StandardError
           Exception
         end
         current_mail.mark(:unread)
@@ -142,7 +138,8 @@ module OnlyofficeGmailHelper
       array_of_mail
     end
 
-    def get_current_date(date_str) # recieved mail in format "Thu, 23 Jan 2014 15:34:57 +0400". Day of week may\may not be present
+    # received mail in format "Thu, 23 Jan 2014 15:34:57 +0400". Day of week may\may not be present
+    def get_current_date(date_str)
       data_arr = date_str.split.reverse
       { day: data_arr[4].to_i, hour: data_arr[1].split(':')[0].to_i, minute: data_arr[1].split(':')[1].to_i }
     end
@@ -189,7 +186,7 @@ module OnlyofficeGmailHelper
           else
             begin
               current_mail.mark(:unread)
-            rescue
+            rescue StandardError
               Exception
             end
           end
@@ -206,7 +203,7 @@ module OnlyofficeGmailHelper
           else
             begin
               current_mail.mark(:unread)
-            rescue
+            rescue StandardError
               Exception
             end
           end
@@ -287,7 +284,7 @@ module OnlyofficeGmailHelper
         current_subject = begin
           current_mail.html_part.body.decoded
                       .force_encoding('utf-8').encode('UTF-8')
-        rescue
+        rescue StandardError
           Exception
         end
         reply_to = current_mail.reply_to[0] unless current_mail.reply_to.nil?
@@ -348,7 +345,7 @@ module OnlyofficeGmailHelper
         current_title = current_mail.message.subject
         current_subject = begin
           current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-        rescue
+        rescue StandardError
           Exception
         end
         current_mail.mark(:unread)
