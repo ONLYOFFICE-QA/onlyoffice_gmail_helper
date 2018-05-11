@@ -10,6 +10,22 @@ class Object
   end
 end
 
+# Monkey patch IMAP to fix https://bugs.ruby-lang.org/issues/14750
+# TODO: Remove after release of fix as stable version
+module Net
+  class IMAP
+    alias send_literal_bug_14750 send_literal
+
+    def send_literal(str, tag = nil)
+      if RUBY_VERSION.start_with?('2.5', '2.6')
+        send_literal_bug_14750(str, tag)
+      else
+        send_literal_bug_14750(str)
+      end
+    end
+  end
+end
+
 # Helper module for GMail
 module OnlyofficeGmailHelper
   class Gmail_helper
@@ -163,8 +179,8 @@ module OnlyofficeGmailHelper
       false
     end
 
-    def check_messages_for_message_with_portal_address(message, current_portal_full_name)
-      300.times do
+    def check_messages_for_message_with_portal_address(message, current_portal_full_name, times: 300)
+      times.times do
         messages_array = mailbox.emails(:unread, search: current_portal_full_name.to_s)
         messages_array.each do |current_mail|
           next unless message_found?(current_mail.message.subject, message.title)
