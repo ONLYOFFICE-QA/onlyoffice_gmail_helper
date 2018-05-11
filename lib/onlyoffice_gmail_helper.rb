@@ -10,6 +10,18 @@ class Object
   end
 end
 
+# Monkey patch IMAP to fix https://bugs.ruby-lang.org/issues/14750
+# TODO: Remove after release of fix as stable version
+module Net
+  class IMAP
+    alias send_literal_bug_14750 send_literal
+
+    def send_literal(str, tag = nil)
+      send_literal_bug_14750(str, tag)
+    end
+  end
+end
+
 # Helper module for GMail
 module OnlyofficeGmailHelper
   class Gmail_helper
