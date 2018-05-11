@@ -17,7 +17,11 @@ module Net
     alias send_literal_bug_14750 send_literal
 
     def send_literal(str, tag = nil)
-      send_literal_bug_14750(str, tag)
+      if RUBY_VERSION.start_with?('2.5')
+        send_literal_bug_14750(str, tag)
+      else
+        send_literal_bug_14750(str)
+      end
     end
   end
 end
