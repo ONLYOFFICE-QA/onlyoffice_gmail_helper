@@ -80,13 +80,6 @@ module OnlyofficeGmailHelper
       Exception
     end
 
-    # Refresh connection data
-    # @return [nil]
-    def refresh
-      logout
-      @gmail = Gmail.new(@user, @password)
-    end
-
     # Get mail body by title
     # @param [String] portal_address to filter
     # @param [String] subject to find
