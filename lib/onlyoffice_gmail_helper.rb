@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gmail'
 require 'onlyoffice_logger_helper'
 require 'onlyoffice_gmail_helper/email_account'
@@ -29,10 +31,15 @@ end
 # Helper module for GMail
 module OnlyofficeGmailHelper
   class Gmail_helper
+    # @return [Gmail] gmail object
     attr_accessor :gmail
+    # @return [String] user name
     attr_accessor :user
+    # @return [String] user password
     attr_accessor :password
+    # @return [Integer] default timeout for operation
     attr_accessor :timeout_for_mail
+    # @return [String] default label
     attr_accessor :label
 
     def initialize(user = EmailAccount::GMAIL_DEFAULT.login, password = EmailAccount::GMAIL_DEFAULT.password, timeout_for_mail = 10, label = nil)
@@ -75,6 +82,7 @@ module OnlyofficeGmailHelper
       while counter < timeout && !message_found
         @gmail.inbox.emails.each do |current_mail|
           next unless current_mail.subject.include?(title)
+
           message = MailMessage.new(current_mail.subject,
                                     current_mail.html_part.body)
           return message
@@ -82,8 +90,7 @@ module OnlyofficeGmailHelper
         sleep period
         refresh
       end
-      raise 'Message with title: ' + title + ' not found for ' +
-            (timeout * 60).to_s + ' seconds'
+      raise "Message with title: #{title} not found for #{timeout * 60} seconds"
     end
 
     def get_body_message_by_title_from_mail(current_portal_full, title1 = 'Welcome to ONLYOFFICE™ Portal!', title2 = 'Добро пожаловать на портал TeamLab!', delete = true, _to_mail = nil)
@@ -107,7 +114,8 @@ module OnlyofficeGmailHelper
               return current_subject
             end
           else
-            raise 'Message with title: ' + title1 + ' not found after ' + attempt.to_s + ' attempt' if attempt == 10
+            raise "Message with title: #{title1} not found after #{attempt} attempt" if attempt == 10
+
             sleep 10
             attempt += 1
             current_mail.delete! if delete
@@ -123,6 +131,7 @@ module OnlyofficeGmailHelper
         messages_array = mailbox.emails(:unread, flags)
         messages_array.each do |current_mail|
           next unless message_found?(current_mail.message.subject, subject)
+
           body = begin
             current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
           rescue StandardError
@@ -184,6 +193,7 @@ module OnlyofficeGmailHelper
         messages_array = mailbox.emails(:unread, search: current_portal_full_name.to_s)
         messages_array.each do |current_mail|
           next unless message_found?(current_mail.message.subject, message.title)
+
           OnlyofficeLoggerHelper.log('Email successfully found and removed')
           current_mail.delete!
           return true
@@ -254,10 +264,10 @@ module OnlyofficeGmailHelper
       while timer < @timeout_for_mail && message_found == false
         messages.each do |current_unread_mail|
           next unless current_unread_mail == mail_to_reply
+
           email = @gmail.compose do
-            to((current_unread_mail.reply_to.mailbox + '@' +
-                current_unread_mail.reply_to.host).to_s)
-            subject 'Re: ' + current_unread_mail.title
+            to("#{current_unread_mail.reply_to.mailbox}@#{current_unread_mail.reply_to.host}".to_s)
+            subject "Re: #{current_unread_mail.title}"
             body reply_body
           end
           email.deliver!
@@ -282,9 +292,8 @@ module OnlyofficeGmailHelper
     end
 
     def send_notification(email, test_name, error, mail_title = 'Teamlab Daily Check')
-      body = 'Fail in ' + test_name.to_s + "\n" \
-        "Error text: \n" \
-        "\t" + error.to_s
+      body = "Fail in #{test_name}\n" \
+             "Error text: \n\t #{error}"
       send_mail(email, mail_title, body)
     end
 
@@ -326,7 +335,7 @@ module OnlyofficeGmailHelper
       body = ''
       array_results.each do |current_result|
         current_result[1] = 'OK' if current_result[1].nil?
-        body = body + current_result[0].to_s + "\t" + current_result[1].to_s + "\n"
+        body = "#{body}#{current_result[0]}\t#{current_result[1]}\n"
       end
 
       if mail.is_a?(Array)

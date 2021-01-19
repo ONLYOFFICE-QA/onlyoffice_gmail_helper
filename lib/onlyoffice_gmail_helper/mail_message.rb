@@ -1,10 +1,17 @@
+# frozen_string_literal: true
+
 module OnlyofficeGmailHelper
   # Class for working with single message
   class MailMessage
+    # @return [String] mail title
     attr_accessor :title
+    # @return [String] mail content
     attr_accessor :content
+    # @return [String] reply to field
     attr_accessor :reply_to
+    # @return [String] date field
     attr_accessor :date
+    # @return [String] tags field
     attr_accessor :tags
 
     def initialize(title, content = nil, reply_to = nil, date = nil, tags = nil)
@@ -50,9 +57,7 @@ module OnlyofficeGmailHelper
     def ==(other)
       compare_title = (title.delete("\n") == other.title.delete("\n"))
       compare_body = true
-      if (StaticDataTeamLab.check_email_body if defined?(StaticDataTeamLab.check_email_body)) && compare_title
-        compare_body = false if (other.content =~ content).nonzero?
-      end
+      compare_body = false if (StaticDataTeamLab.check_email_body if defined?(StaticDataTeamLab.check_email_body)) && compare_title && (other.content =~ content).nonzero?
       compare_title && compare_body
     end
   end
