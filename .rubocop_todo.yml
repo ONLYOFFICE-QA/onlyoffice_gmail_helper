@@ -121,13 +121,6 @@ Style/SoleNestedConditional:
   Exclude:
     - 'lib/onlyoffice_gmail_helper/mail_message.rb'
 
-# Offense count: 7
-# Cop supports --auto-correct.
-Style/StringConcatenation:
-  Exclude:
-    - 'lib/onlyoffice_gmail_helper.rb'
-    - 'lib/onlyoffice_gmail_helper/email_account.rb'
-
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

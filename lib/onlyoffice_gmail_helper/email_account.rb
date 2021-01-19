@@ -5,7 +5,7 @@ module OnlyofficeGmailHelper
     def self.read_defaults
       return read_env_defaults if read_env_defaults
 
-      yaml = YAML.load_file(Dir.home + '/.gem-onlyoffice_gmail_helper/config.yml')
+      yaml = YAML.load_file("#{Dir.home}/.gem-onlyoffice_gmail_helper/config.yml")
       { user: yaml['user'], password: yaml['password'] }
     rescue Errno::ENOENT
       raise Errno::ENOENT, 'No config found. Please create ~/.gem-onlyoffice_gmail_helper/config.yml'

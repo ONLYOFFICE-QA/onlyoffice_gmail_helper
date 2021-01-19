@@ -83,8 +83,7 @@ module OnlyofficeGmailHelper
         sleep period
         refresh
       end
-      raise 'Message with title: ' + title + ' not found for ' +
-            (timeout * 60).to_s + ' seconds'
+      raise "Message with title: #{title} not found for #{timeout * 60} seconds"
     end
 
     def get_body_message_by_title_from_mail(current_portal_full, title1 = 'Welcome to ONLYOFFICE™ Portal!', title2 = 'Добро пожаловать на портал TeamLab!', delete = true, _to_mail = nil)
@@ -108,7 +107,7 @@ module OnlyofficeGmailHelper
               return current_subject
             end
           else
-            raise 'Message with title: ' + title1 + ' not found after ' + attempt.to_s + ' attempt' if attempt == 10
+            raise "Message with title: #{title1} not found after #{attempt} attempt" if attempt == 10
 
             sleep 10
             attempt += 1
@@ -260,9 +259,8 @@ module OnlyofficeGmailHelper
           next unless current_unread_mail == mail_to_reply
 
           email = @gmail.compose do
-            to((current_unread_mail.reply_to.mailbox + '@' +
-                current_unread_mail.reply_to.host).to_s)
-            subject 'Re: ' + current_unread_mail.title
+            to("#{current_unread_mail.reply_to.mailbox}@#{current_unread_mail.reply_to.host}".to_s)
+            subject "Re: #{current_unread_mail.title}"
             body reply_body
           end
           email.deliver!
@@ -287,9 +285,8 @@ module OnlyofficeGmailHelper
     end
 
     def send_notification(email, test_name, error, mail_title = 'Teamlab Daily Check')
-      body = 'Fail in ' + test_name.to_s + "\n" \
-        "Error text: \n" \
-        "\t" + error.to_s
+      body = "Fail in #{test_name}\n" \
+             "Error text: \n\t #{error}"
       send_mail(email, mail_title, body)
     end
 
@@ -331,7 +328,7 @@ module OnlyofficeGmailHelper
       body = ''
       array_results.each do |current_result|
         current_result[1] = 'OK' if current_result[1].nil?
-        body = body + current_result[0].to_s + "\t" + current_result[1].to_s + "\n"
+        body = "#{body}#{current_result[0]}\t#{current_result[1]}\n"
       end
 
       if mail.is_a?(Array)
