@@ -114,13 +114,6 @@ Style/OptionalBooleanParameter:
   Exclude:
     - 'lib/onlyoffice_gmail_helper.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowModifier.
-Style/SoleNestedConditional:
-  Exclude:
-    - 'lib/onlyoffice_gmail_helper/mail_message.rb'
-
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

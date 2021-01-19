@@ -50,9 +50,7 @@ module OnlyofficeGmailHelper
     def ==(other)
       compare_title = (title.delete("\n") == other.title.delete("\n"))
       compare_body = true
-      if (StaticDataTeamLab.check_email_body if defined?(StaticDataTeamLab.check_email_body)) && compare_title
-        compare_body = false if (other.content =~ content).nonzero?
-      end
+      compare_body = false if (StaticDataTeamLab.check_email_body if defined?(StaticDataTeamLab.check_email_body)) && compare_title && (other.content =~ content).nonzero?
       compare_title && compare_body
     end
   end
