@@ -157,14 +157,6 @@ module OnlyofficeGmailHelper
       array_of_mail
     end
 
-    # received mail in format "Thu, 23 Jan 2014 15:34:57 +0400". Day of week may\may not be present
-    # @param [String] date_str original string
-    # @return [Hash] date
-    def get_current_date(date_str)
-      data_arr = date_str.split.reverse
-      { day: data_arr[4].to_i, hour: data_arr[1].split(':')[0].to_i, minute: data_arr[1].split(':')[1].to_i }
-    end
-
     # Check unread messages for message
     # @param [String] mail_message to find
     # @return [Boolean] result

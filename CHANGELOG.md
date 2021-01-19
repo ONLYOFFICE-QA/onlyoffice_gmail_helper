@@ -5,6 +5,7 @@
 ### Changes
 
 * Remove unused `get_body_message_by_title_from_mail` method
+* Remove unused `get_current_date` method
 
 ## 0.2.0 (2021-01-19)
 
