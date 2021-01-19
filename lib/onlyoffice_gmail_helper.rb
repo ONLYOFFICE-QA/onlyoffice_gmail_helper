@@ -398,26 +398,6 @@ module OnlyofficeGmailHelper
       @gmail.labels.all
     end
 
-    # Get list of unread mails with tags
-    # @return [Array<MailMessage>] result
-    def get_unread_mails_with_tags
-      refresh
-      array_of_mail = []
-      mailbox.emails(:unread).each do |current_mail|
-        current_title = current_mail.message.subject
-        current_subject = begin
-          current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-        rescue StandardError
-          Exception
-        end
-        current_mail.mark(:unread)
-        reply_to = current_mail.reply_to[0] unless current_mail.reply_to.nil?
-        current_tag = current_mail
-        array_of_mail << MailMessage.new(current_title, current_subject, reply_to, current_tag)
-      end
-      array_of_mail
-    end
-
     private
 
     def message_found?(given, needed)
