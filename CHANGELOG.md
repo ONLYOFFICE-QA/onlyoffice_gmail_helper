@@ -8,6 +8,7 @@
 * Check `rubocop` in CI
 * Check that 100% code is documented in CI
 * Add `dependabot` config
+* Add `rake` task to release gem
 
 ### Changes
 
