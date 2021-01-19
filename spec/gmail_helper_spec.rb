@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe 'gmail helper' do
   let(:gmail) { OnlyofficeGmailHelper::Gmail_helper.new }
-  let(:test_message) { OnlyofficeGmailHelper::MailMessage.new('test', 'test') }
+  let(:test_message) { OnlyofficeGmailHelper::MailMessage.new('test-nonexist', 'test-nonexist') }
 
   it 'login to gmail' do
     expect(gmail.mailbox.name).to eq('[Gmail]/All Mail')
