@@ -157,27 +157,6 @@ module OnlyofficeGmailHelper
       array_of_mail
     end
 
-    # Check unread messages for message
-    # @param [String] mail_message to find
-    # @return [Boolean] result
-    def check_unread_messages_for_message(mail_message)
-      messages = get_unread_messages
-      timer = 0
-      message_found = false
-      while timer < @timeout_for_mail && message_found == false
-        messages.each do |current_unread_mail|
-          # p current_unread_mail
-          if current_unread_mail == mail_message
-            delete_messages(current_unread_mail)
-            return true
-          end
-        end
-        messages = get_unread_messages
-        timer += 1
-      end
-      false
-    end
-
     # Check message for message with portal
     # @param [String] message title
     # @param [String] current_portal_full_name name
