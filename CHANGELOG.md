@@ -12,6 +12,7 @@
 * Remove unused `get_labels` method
 * Remove unused `send_mail_test_result` method
 * Remove unused `mark_all_unread` method
+* Remove unused `delete_from_sender` method
 
 ## 0.2.0 (2021-01-19)
 

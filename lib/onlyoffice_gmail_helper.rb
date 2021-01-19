@@ -344,13 +344,6 @@ module OnlyofficeGmailHelper
       array_of_mail
     end
 
-    # Delete all mail from sender
-    # @param [String] string messanger
-    # @return [nil]
-    def delete_from_sender(string)
-      mailbox.emails(from: string).each(&:delete!)
-    end
-
     private
 
     def message_found?(given, needed)
