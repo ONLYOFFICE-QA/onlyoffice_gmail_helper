@@ -3,10 +3,15 @@
 module OnlyofficeGmailHelper
   # Class for working with single message
   class MailMessage
+    # @return [String] mail title
     attr_accessor :title
+    # @return [String] mail content
     attr_accessor :content
+    # @return [String] reply to field
     attr_accessor :reply_to
+    # @return [String] date field
     attr_accessor :date
+    # @return [String] tags field
     attr_accessor :tags
 
     def initialize(title, content = nil, reply_to = nil, date = nil, tags = nil)

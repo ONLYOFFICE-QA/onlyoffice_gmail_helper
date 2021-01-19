@@ -2,8 +2,10 @@
 
 module OnlyofficeGmailHelper
   class MailAccount
+    # @return [String] user name
     attr_accessor :username
     alias login username
+    # @return [String] user password
     attr_accessor :password
 
     def initialize(user, pass)

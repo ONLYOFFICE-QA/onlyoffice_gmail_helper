@@ -69,16 +69,6 @@ RSpec/DescribeClass:
   Exclude:
     - 'spec/gmail_helper_spec.rb'
 
-# Offense count: 12
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: separated, grouped
-Style/AccessorGrouping:
-  Exclude:
-    - 'lib/onlyoffice_gmail_helper.rb'
-    - 'lib/onlyoffice_gmail_helper/email_account/mail_account.rb'
-    - 'lib/onlyoffice_gmail_helper/mail_message.rb'
-
 # Offense count: 5
 Style/Documentation:
   Exclude:

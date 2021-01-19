@@ -31,10 +31,15 @@ end
 # Helper module for GMail
 module OnlyofficeGmailHelper
   class Gmail_helper
+    # @return [Gmail] gmail object
     attr_accessor :gmail
+    # @return [String] user name
     attr_accessor :user
+    # @return [String] user password
     attr_accessor :password
+    # @return [Integer] default timeout for operation
     attr_accessor :timeout_for_mail
+    # @return [String] default label
     attr_accessor :label
 
     def initialize(user = EmailAccount::GMAIL_DEFAULT.login, password = EmailAccount::GMAIL_DEFAULT.password, timeout_for_mail = 10, label = nil)
