@@ -198,28 +198,6 @@ module OnlyofficeGmailHelper
       false
     end
 
-    # Delete message with portal address
-    # @param [String] message title to delete
-    # @param [String] current_portal_full_name to delete
-    # @return [nil]
-    def delete_message_with_portal_address(message, current_portal_full_name)
-      300.times do
-        messages_array = mailbox.emails(:unread, search: current_portal_full_name.to_s)
-        messages_array.each do |current_mail|
-          if message.title == current_mail.message.subject
-            current_mail.delete!
-            return true
-          else
-            begin
-              current_mail.mark(:unread)
-            rescue StandardError
-              Exception
-            end
-          end
-        end
-      end
-    end
-
     # Delete specific message
     # @param [String] message title to delete
     # @return [nil]
