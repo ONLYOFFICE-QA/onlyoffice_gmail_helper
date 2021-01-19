@@ -351,14 +351,6 @@ module OnlyofficeGmailHelper
       mailbox.emails(from: string).each(&:delete!)
     end
 
-    # Mark all messages as unread
-    # @return [nil]
-    def mark_all_unread
-      mailbox.emails.each do |current_mail|
-        current_mail.mark(:unread)
-      end
-    end
-
     private
 
     def message_found?(given, needed)
