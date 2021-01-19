@@ -257,33 +257,6 @@ module OnlyofficeGmailHelper
       messages_array.each(&:delete!)
     end
 
-    # Reply to mail
-    # @param [String] mail_to_reply
-    # @param [String] reply_body to do
-    # @return [nil]
-    def reply_mail(mail_to_reply, reply_body)
-      messages = get_unread_messages
-      timer = 0
-      message_found = false
-      while timer < @timeout_for_mail && message_found == false
-        messages.each do |current_unread_mail|
-          next unless current_unread_mail == mail_to_reply
-
-          email = @gmail.compose do
-            to("#{current_unread_mail.reply_to.mailbox}@#{current_unread_mail.reply_to.host}".to_s)
-            subject "Re: #{current_unread_mail.title}"
-            body reply_body
-          end
-          email.deliver!
-          delete_messages(current_unread_mail)
-          return true
-        end
-        messages = get_unread_messages
-        timer += 1
-      end
-      false
-    end
-
     # Send mail
     # @param [String] email to send
     # @param [String] title to send
