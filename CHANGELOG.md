@@ -6,7 +6,7 @@
 
 * Remove unused `get_body_message_by_title_from_mail` method
 
-## 0.2.0 (2020-01-19)
+## 0.2.0 (2021-01-19)
 
 ### New Features
 
