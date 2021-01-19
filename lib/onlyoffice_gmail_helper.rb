@@ -390,14 +390,6 @@ module OnlyofficeGmailHelper
       end
     end
 
-    # If not returning nested levels please change content of file
-    # +/home/#{user}/.rvm/gems/#{gemset}/gems/gmail-0.4.0/lib/gmail/labels.rb+
-    # to content of that file: https://github.com/jgrevich/gmail/blob/6ed88950bd631696aeb1bc4b9133b03d1ae4055f/lib/gmail/labels.rb
-    # @return [Array<String>] list of all labels
-    def get_labels
-      @gmail.labels.all
-    end
-
     private
 
     def message_found?(given, needed)
