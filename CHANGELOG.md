@@ -13,6 +13,7 @@
 * Remove unused `send_mail_test_result` method
 * Remove unused `mark_all_unread` method
 * Remove unused `delete_from_sender` method
+* Remove unused `mail_inbox_count` method
 
 ## 0.2.0 (2021-01-19)
 

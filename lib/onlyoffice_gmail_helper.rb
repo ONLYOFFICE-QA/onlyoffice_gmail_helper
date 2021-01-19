@@ -313,13 +313,6 @@ module OnlyofficeGmailHelper
       send_mail(email, mail_title, body)
     end
 
-    # @return [Integer] count message in inbox
-    def mail_inbox_count
-      count = @gmail.inbox.emails.count
-      OnlyofficeLoggerHelper.log("#{count} mails in inbox of #{@user}")
-      count
-    end
-
     # List all mail in label with date
     # @param [String] string label
     # @param [Date] date_start to find
