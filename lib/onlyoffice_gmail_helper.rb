@@ -249,14 +249,6 @@ module OnlyofficeGmailHelper
       OnlyofficeLoggerHelper.log("Finished deleting all messaged on mail: #{@user}")
     end
 
-    # Archive all inbox
-    # @return [nil]
-    def archive_inbox
-      OnlyofficeLoggerHelper.log("Start achieving  all messaged in inbox on mail: #{@user}")
-      @gmail.inbox.emails.each(&:archive!) if mail_inbox_count.nonzero?
-      OnlyofficeLoggerHelper.log("Finished achieving  all messaged in inbox on mail: #{@user}")
-    end
-
     # @param [String] contain_string message to delete
     # @return [nil]
     def delete_all_message_contains(contain_string)
