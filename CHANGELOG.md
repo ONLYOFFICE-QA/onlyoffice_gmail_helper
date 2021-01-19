@@ -10,6 +10,7 @@
 * Remove unused `get_body_by_subject_email` method
 * Remove unused `get_unread_mails_with_tags` method
 * Remove unused `get_labels` method
+* Remove unused `send_mail_test_result` method
 
 ## 0.2.0 (2021-01-19)
 

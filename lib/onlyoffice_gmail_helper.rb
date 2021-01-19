@@ -359,37 +359,6 @@ module OnlyofficeGmailHelper
       end
     end
 
-    # Send mail test result
-    # @param [String] mail to send
-    # @param [String] title to send
-    # @param [Array<String>] array_results test data
-    # @return [nil]
-    def send_mail_test_result(mail, title, array_results)
-      body = ''
-      array_results.each do |current_result|
-        current_result[1] = 'OK' if current_result[1].nil?
-        body = "#{body}#{current_result[0]}\t#{current_result[1]}\n"
-      end
-
-      if mail.is_a?(Array)
-        mail.each do |current_mail_user|
-          email = @gmail.compose do
-            to current_mail_user
-            subject title
-            body body
-          end
-          email.deliver!
-        end
-      else
-        email = @gmail.compose do
-          to mail
-          subject title
-          body body
-        end
-        email.deliver!
-      end
-    end
-
     private
 
     def message_found?(given, needed)
