@@ -87,7 +87,7 @@ module OnlyofficeGmailHelper
           next unless message_found?(current_mail.message.subject, subject)
 
           body = begin
-            current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
+            message_body(current_mail)
           rescue StandardError
             Exception
           end
@@ -192,6 +192,16 @@ module OnlyofficeGmailHelper
 
     def message_found?(given, needed)
       given.to_s.upcase.include? needed.to_s.upcase
+    end
+
+    # Get message body
+    # Html part if exists, or text part if not
+    # @param [Gmail::Message] message to get
+    # @return [String] body
+    def message_body(message)
+      return message.body.to_s if message.html_part.nil?
+
+      message.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
     end
   end
 end

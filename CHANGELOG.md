@@ -2,6 +2,14 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add new spec tests
+
+### Fixes
+
+* `get_body_message_by_title` correct return if no html body
+
 ### Changes
 
 * Remove unused `get_body_message_by_title_from_mail` method

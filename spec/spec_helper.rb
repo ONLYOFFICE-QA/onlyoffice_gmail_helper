@@ -5,6 +5,7 @@ SimpleCov.start
 
 require 'bundler/setup'
 require 'onlyoffice_gmail_helper'
+require 'securerandom'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
