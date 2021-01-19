@@ -19,6 +19,7 @@
 * Remove unused `delete_all_message_contains` method
 * Remove unused `delete_message_with_portal_address` method
 * Remove unused `check_unread_messages_for_message` method
+* Remove unused `get_unread_messages` method
 
 ## 0.2.0 (2021-01-19)
 

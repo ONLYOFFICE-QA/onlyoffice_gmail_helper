@@ -136,27 +136,6 @@ module OnlyofficeGmailHelper
       nil
     end
 
-    # @return [Array<Message>] list of underad messages
-    def get_unread_messages
-      refresh
-      array_of_mail = []
-      mailbox.emails(:unread).reverse_each do |current_mail|
-        current_title = current_mail.message.subject
-        current_subject = begin
-          current_mail.html_part.body.decoded
-                      .force_encoding('utf-8').encode('UTF-8')
-        rescue StandardError
-          Exception
-        end
-        current_mail.mark(:unread)
-        reply_to = current_mail.reply_to[0] unless current_mail.reply_to == []
-        array_of_mail << MailMessage.new(current_title,
-                                         current_subject,
-                                         reply_to)
-      end
-      array_of_mail
-    end
-
     # Check message for message with portal
     # @param [String] message title
     # @param [String] current_portal_full_name name
