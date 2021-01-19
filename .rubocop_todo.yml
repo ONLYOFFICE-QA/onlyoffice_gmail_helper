@@ -88,25 +88,6 @@ Style/Documentation:
     - 'lib/onlyoffice_gmail_helper/email_account.rb'
     - 'lib/onlyoffice_gmail_helper/email_account/mail_account.rb'
 
-# Offense count: 12
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'Gemfile'
-    - 'Rakefile'
-    - 'lib/onlyoffice_gmail_helper.rb'
-    - 'lib/onlyoffice_gmail_helper/email_account.rb'
-    - 'lib/onlyoffice_gmail_helper/email_account/mail_account.rb'
-    - 'lib/onlyoffice_gmail_helper/mail_message.rb'
-    - 'lib/onlyoffice_gmail_helper/name.rb'
-    - 'lib/onlyoffice_gmail_helper/version.rb'
-    - 'spec/gmail_helper_spec.rb'
-    - 'spec/mail_message_spec.rb'
-    - 'spec/onlyoffice_gmail_helper_spec.rb'
-    - 'spec/spec_helper.rb'
-
 # Offense count: 2
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: respond_to_missing?

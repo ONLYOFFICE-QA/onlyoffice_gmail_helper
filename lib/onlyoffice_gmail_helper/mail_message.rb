@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeGmailHelper
   # Class for working with single message
   class MailMessage

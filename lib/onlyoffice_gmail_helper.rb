@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gmail'
 require 'onlyoffice_logger_helper'
 require 'onlyoffice_gmail_helper/email_account'

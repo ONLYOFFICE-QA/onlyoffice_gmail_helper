@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OnlyofficeGmailHelper
   class MailAccount
     attr_accessor :username
