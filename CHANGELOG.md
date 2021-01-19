@@ -16,6 +16,7 @@
 * Remove unused `mail_inbox_count` method
 * Remove unused `mail_in_label_with_date` method
 * Remove unused `reply_mail` method
+* Remove unused `delete_all_message_contains` method
 
 ## 0.2.0 (2021-01-19)
 

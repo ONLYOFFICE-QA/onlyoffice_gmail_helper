@@ -249,14 +249,6 @@ module OnlyofficeGmailHelper
       OnlyofficeLoggerHelper.log("Finished deleting all messaged on mail: #{@user}")
     end
 
-    # @param [String] contain_string message to delete
-    # @return [nil]
-    def delete_all_message_contains(contain_string)
-      OnlyofficeLoggerHelper.log("Messages containing #{contain_string} will be deleted")
-      messages_array = mailbox.emails(:unread, search: contain_string)
-      messages_array.each(&:delete!)
-    end
-
     # Send mail
     # @param [String] email to send
     # @param [String] title to send
