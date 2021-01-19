@@ -301,18 +301,6 @@ module OnlyofficeGmailHelper
       OnlyofficeLoggerHelper.log("send_mail(#{email}, #{title}, #{body}, #{attachment})")
     end
 
-    # Send notification
-    # @param [String] email to send
-    # @param [String] test_name - name of test
-    # @param [String] error - error to send
-    # @param [String] mail_title to send
-    # @return [nil]
-    def send_notification(email, test_name, error, mail_title = 'Teamlab Daily Check')
-      body = "Fail in #{test_name}\n" \
-             "Error text: \n\t #{error}"
-      send_mail(email, mail_title, body)
-    end
-
     # List all mail in label with date
     # @param [String] string label
     # @param [Date] date_start to find
