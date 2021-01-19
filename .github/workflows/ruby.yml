@@ -18,6 +18,10 @@ jobs:
       run: |
         npm install -g markdownlint-cli
         markdownlint *.md
+    - name: Set up Ruby ${{ matrix.ruby }}
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
     - name: Install dependencies
       run: |
         gem install bundler
