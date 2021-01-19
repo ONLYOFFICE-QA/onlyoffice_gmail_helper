@@ -75,6 +75,7 @@ module OnlyofficeGmailHelper
       while counter < timeout && !message_found
         @gmail.inbox.emails.each do |current_mail|
           next unless current_mail.subject.include?(title)
+
           message = MailMessage.new(current_mail.subject,
                                     current_mail.html_part.body)
           return message
@@ -108,6 +109,7 @@ module OnlyofficeGmailHelper
             end
           else
             raise 'Message with title: ' + title1 + ' not found after ' + attempt.to_s + ' attempt' if attempt == 10
+
             sleep 10
             attempt += 1
             current_mail.delete! if delete
@@ -123,6 +125,7 @@ module OnlyofficeGmailHelper
         messages_array = mailbox.emails(:unread, flags)
         messages_array.each do |current_mail|
           next unless message_found?(current_mail.message.subject, subject)
+
           body = begin
             current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
           rescue StandardError
@@ -184,6 +187,7 @@ module OnlyofficeGmailHelper
         messages_array = mailbox.emails(:unread, search: current_portal_full_name.to_s)
         messages_array.each do |current_mail|
           next unless message_found?(current_mail.message.subject, message.title)
+
           OnlyofficeLoggerHelper.log('Email successfully found and removed')
           current_mail.delete!
           return true
@@ -254,6 +258,7 @@ module OnlyofficeGmailHelper
       while timer < @timeout_for_mail && message_found == false
         messages.each do |current_unread_mail|
           next unless current_unread_mail == mail_to_reply
+
           email = @gmail.compose do
             to((current_unread_mail.reply_to.mailbox + '@' +
                 current_unread_mail.reply_to.host).to_s)
