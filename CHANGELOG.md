@@ -7,6 +7,7 @@
 * Remove unused `get_body_message_by_title_from_mail` method
 * Remove unused `get_current_date` method
 * Remove unused `archive_inbox` method
+* Remove unused `get_body_by_subject_email` method
 
 ## 0.2.0 (2021-01-19)
 

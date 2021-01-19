@@ -418,27 +418,6 @@ module OnlyofficeGmailHelper
       array_of_mail
     end
 
-    # Get body by email subject
-    # @param [String] subject to get
-    # @param [String] portal_name to filter
-    # @return [String] body
-    def get_body_by_subject_email(subject, portal_name)
-      p 'get_body_by_subject_email'
-      300.times do |current|
-        p "current time: #{current}"
-        messages_array = mailbox.emails(:unread, search: portal_name.to_s)
-        messages_array.each do |current_mail|
-          current_subject = current_mail.message.subject
-          p "current_subject: #{current_subject}"
-          if message_found?(current_subject, subject)
-            body_text = current_mail.message.text_part.body.decoded.force_encoding('utf-8').encode('UTF-8').gsub(/\s+/, ' ').strip
-            return body_text
-          end
-        end
-      end
-      nil
-    end
-
     private
 
     def message_found?(given, needed)
