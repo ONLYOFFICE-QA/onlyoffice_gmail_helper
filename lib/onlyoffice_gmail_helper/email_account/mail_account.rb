@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module OnlyofficeGmailHelper
+  # Class for storing mail account data
   class MailAccount
     # @return [String] user name
     attr_accessor :username

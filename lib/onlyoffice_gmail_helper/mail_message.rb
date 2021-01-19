@@ -54,6 +54,9 @@ module OnlyofficeGmailHelper
       @tags = tags
     end
 
+    # Compare message with other
+    # @param [MailMessage] other to compare
+    # @return [Boolean] result
     def ==(other)
       compare_title = (title.delete("\n") == other.title.delete("\n"))
       compare_body = true
