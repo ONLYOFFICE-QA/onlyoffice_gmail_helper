@@ -6,14 +6,6 @@ require 'onlyoffice_gmail_helper/email_account'
 require 'onlyoffice_gmail_helper/mail_message'
 require 'onlyoffice_gmail_helper/version'
 
-# Override object class
-class Object
-  # @return [Date] format date for imap
-  def to_imap_date
-    Date.parse(to_s).strftime('%d-%b-%Y')
-  end
-end
-
 # Monkey patch IMAP to fix https://bugs.ruby-lang.org/issues/14750
 # TODO: Remove after release of fix as stable version
 module Net

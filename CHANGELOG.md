@@ -22,6 +22,7 @@
 * Remove unused `get_unread_messages` method
 * Remove unused `wait_until_unread_message` method
 * Remove unused `refresh` method
+* Remove unused `Object#to_imap_date` method
 
 ## 0.2.0 (2021-01-19)
 
