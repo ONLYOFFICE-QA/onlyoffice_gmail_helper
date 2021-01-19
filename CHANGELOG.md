@@ -17,6 +17,7 @@
 * Freeze all dependencies in Gemfile.lock
 * Remove support of `codecov`
 * Add missing documentation
+* Move repo to `ONLYOFFICE-QA` org
 
 ### Fixes
 
