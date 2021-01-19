@@ -110,44 +110,6 @@ module OnlyofficeGmailHelper
       raise "Message with title: #{title} not found for #{timeout * 60} seconds"
     end
 
-    # Get body message by title
-    # @param [String] current_portal_full portal name to search
-    # @param [String] title1 title to filter
-    # @param [String] title2 title to filter
-    # @param [Boolean] delete this message
-    # @param [Boolean] _to_mail unused
-    # @return [MailMessage] found message
-    def get_body_message_by_title_from_mail(current_portal_full, title1 = 'Welcome to ONLYOFFICE™ Portal!', title2 = 'Добро пожаловать на портал TeamLab!', delete = true, _to_mail = nil)
-      mail_not_found = true
-      attempt = 0
-      while mail_not_found
-        messages_array = mailbox.emails(:unread, search: current_portal_full.to_s)
-        messages_array.each do |current_mail|
-          current_subject = current_mail.message.subject
-          a = current_subject.include? title1
-          b = current_subject.include? title2
-          if a || b
-            current_subject = begin
-              current_mail.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
-            rescue StandardError
-              Exception
-            end
-            current_mail.delete! if current_subject == 'Welcome to Your TeamLab Portal!'
-            if current_subject.include? current_portal_full
-              current_mail.delete! if delete
-              return current_subject
-            end
-          else
-            raise "Message with title: #{title1} not found after #{attempt} attempt" if attempt == 10
-
-            sleep 10
-            attempt += 1
-            current_mail.delete! if delete
-          end
-        end
-      end
-    end
-
     # Get mail body by title
     # @param [String] portal_address to filter
     # @param [String] subject to find
