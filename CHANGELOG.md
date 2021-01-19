@@ -20,6 +20,7 @@
 * Remove unused `delete_message_with_portal_address` method
 * Remove unused `check_unread_messages_for_message` method
 * Remove unused `get_unread_messages` method
+* Remove unused `wait_until_unread_message` method
 
 ## 0.2.0 (2021-01-19)
 

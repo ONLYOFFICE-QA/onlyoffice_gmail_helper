@@ -87,29 +87,6 @@ module OnlyofficeGmailHelper
       @gmail = Gmail.new(@user, @password)
     end
 
-    # Wait until unread message exists
-    # @param [String] title message to wait
-    # @param [Integer] timeout to wait
-    # @param [Integer] period sleep between tries
-    # @return [MailMessage] found message
-    def wait_until_unread_message(title,
-                                  timeout = @timeout_for_mail, period = 60)
-      counter = 0
-      message_found = false
-      while counter < timeout && !message_found
-        @gmail.inbox.emails.each do |current_mail|
-          next unless current_mail.subject.include?(title)
-
-          message = MailMessage.new(current_mail.subject,
-                                    current_mail.html_part.body)
-          return message
-        end
-        sleep period
-        refresh
-      end
-      raise "Message with title: #{title} not found for #{timeout * 60} seconds"
-    end
-
     # Get mail body by title
     # @param [String] portal_address to filter
     # @param [String] subject to find
