@@ -1,0 +1,20 @@
+name: Ruby
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.allow-failures }}
+    strategy:
+      matrix:
+        ruby: [2.7, 3.0]
+        allow-failures: [false]
+        include:
+          - ruby: head
+            allow-failures: true
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+    - name: Check markdown files using `markdownlint`
+      run: |
+        npm install -g markdownlint-cli
+        markdownlint *.md
