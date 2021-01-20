@@ -31,6 +31,7 @@
 * Remove unused `wait_until_unread_message` method
 * Remove unused `refresh` method
 * Remove unused `Object#to_imap_date` method
+* Remove patch for ruby bug 14750
 
 ## 0.2.0 (2021-01-19)
 

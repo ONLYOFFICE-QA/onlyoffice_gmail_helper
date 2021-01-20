@@ -6,25 +6,6 @@ require 'onlyoffice_gmail_helper/email_account'
 require 'onlyoffice_gmail_helper/mail_message'
 require 'onlyoffice_gmail_helper/version'
 
-# Monkey patch IMAP to fix https://bugs.ruby-lang.org/issues/14750
-# TODO: Remove after release of fix as stable version
-module Net
-  # Imap main class
-  class IMAP
-    # override bugged method
-    alias send_literal_bug_14750 send_literal
-
-    # Override for but 14750
-    def send_literal(str, tag = nil)
-      if RUBY_VERSION.start_with?('2.5', '2.6')
-        send_literal_bug_14750(str, tag)
-      else
-        send_literal_bug_14750(str)
-      end
-    end
-  end
-end
-
 # Helper module for GMail
 module OnlyofficeGmailHelper
   # Main class of gem
