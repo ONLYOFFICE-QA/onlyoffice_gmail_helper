@@ -199,7 +199,7 @@ module OnlyofficeGmailHelper
     # @param [Gmail::Message] message to get
     # @return [String] body
     def message_body(message)
-      return message.body.to_s if message.html_part.nil?
+      return message.body.to_s unless message.html_part
 
       message.html_part.body.decoded.force_encoding('utf-8').encode('UTF-8')
     end
