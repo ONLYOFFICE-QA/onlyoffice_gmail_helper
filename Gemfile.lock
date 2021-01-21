@@ -21,7 +21,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mini_mime (1.0.2)
-    oauth (0.5.4)
+    oauth (0.5.5)
     onlyoffice_logger_helper (1.1.0)
     overcommit (0.57.0)
       childprocess (>= 0.6.3, < 5)
