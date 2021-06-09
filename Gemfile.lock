@@ -9,7 +9,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    childprocess (4.0.0)
+    childprocess (4.1.0)
     diff-lcs (1.4.4)
     docile (1.4.0)
     gmail (0.7.1)
