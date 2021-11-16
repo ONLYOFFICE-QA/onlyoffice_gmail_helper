@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    onlyoffice_gmail_helper (0.2.0)
+    onlyoffice_gmail_helper (0.3.0)
       gmail (~> 0.6)
       onlyoffice_logger_helper (~> 1)
 
