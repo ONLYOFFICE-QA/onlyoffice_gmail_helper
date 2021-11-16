@@ -32,6 +32,7 @@
 * Remove unused `refresh` method
 * Remove unused `Object#to_imap_date` method
 * Remove patch for ruby bug 14750
+* Require `mfa` for releasing gem
 
 ## 0.2.0 (2021-01-19)
 
