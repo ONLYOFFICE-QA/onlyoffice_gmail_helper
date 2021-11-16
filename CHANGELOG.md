@@ -2,6 +2,8 @@
 
 ## master (unreleased)
 
+## 0.3.0 (2021-11-16)
+
 ### New Features
 
 * Add new spec tests
