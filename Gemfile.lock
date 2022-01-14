@@ -3,6 +3,8 @@ PATH
   specs:
     onlyoffice_gmail_helper (0.3.0)
       gmail (~> 0.6)
+      net-imap (~> 0)
+      net-smtp (~> 0)
       onlyoffice_logger_helper (~> 1)
 
 GEM
@@ -11,6 +13,7 @@ GEM
     ast (2.4.2)
     childprocess (4.1.0)
     diff-lcs (1.5.0)
+    digest (3.1.0)
     docile (1.4.0)
     gmail (0.7.1)
       gmail_xoauth (>= 0.3.0)
@@ -18,9 +21,21 @@ GEM
     gmail_xoauth (0.4.2)
       oauth (>= 0.3.6)
     iniparse (1.5.0)
+    io-wait (0.2.1)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     mini_mime (1.1.2)
+    net-imap (0.2.3)
+      digest
+      net-protocol
+      strscan
+    net-protocol (0.1.2)
+      io-wait
+      timeout
+    net-smtp (0.3.1)
+      digest
+      net-protocol
+      timeout
     oauth (0.5.8)
     onlyoffice_logger_helper (1.2.0)
     overcommit (0.58.0)
@@ -72,6 +87,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.3)
+    strscan (3.0.1)
+    timeout (0.2.0)
     unicode-display_width (2.1.0)
     webrick (1.7.0)
     yard (0.9.27)
@@ -93,4 +110,4 @@ DEPENDENCIES
   yard (~> 0, >= 0.9.20)
 
 BUNDLED WITH
-   2.3.3
+   2.3.4
