@@ -5,6 +5,7 @@
 ### Fixes
 
 * Fix `markdownlint` failure because of old `nodejs` in CI
+* Remove `codeclimate` support since we don't use it any more
 
 ## 0.4.0 (2022-01-14)
 
