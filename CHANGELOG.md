@@ -11,6 +11,10 @@
 * Fix `markdownlint` failure because of old `nodejs` in CI
 * Remove `codeclimate` support since we don't use it any more
 
+### Changes
+
+* Check `dependabot` at 8:00 Moscow time daily
+
 ## 0.4.0 (2022-01-14)
 
 ### New Features
