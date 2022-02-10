@@ -2,6 +2,10 @@
 
 ## master (unreleased)
 
+### New Features
+
+* Add `yamllint` check in CI
+
 ### Fixes
 
 * Fix `markdownlint` failure because of old `nodejs` in CI

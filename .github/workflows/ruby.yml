@@ -6,29 +6,22 @@ jobs:
     continue-on-error: ${{ matrix.allow-failures }}
     strategy:
       matrix:
-        ruby: [2.6, 2.7, '3.0', 3.1]
+        ruby: ['2.6', '2.7', '3.0', '3.1']
         allow-failures: [false]
         include:
           - ruby: head
             allow-failures: true
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16'
-    - name: Check markdown files using `markdownlint`
-      run: |
-        npm install -g markdownlint-cli
-        markdownlint *.md
-    - name: Set up Ruby ${{ matrix.ruby }}
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-    - name: Install dependencies
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-    - name: Check that code 100% documented
-      run: yardoc . | grep -q '100.00% documented'
-    - name: Check source files using `rubocop`
-      run: rubocop
+      - uses: actions/checkout@v2
+      - name: Set up Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: Check that code 100% documented
+        run: yardoc . | grep -q '100.00% documented'
+      - name: Check source files using `rubocop`
+        run: rubocop
