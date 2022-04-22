@@ -15,6 +15,7 @@
 
 * Check `dependabot` at 8:00 Moscow time daily
 * Changes from `rubocop-rspec` update to 2.9.0
+* Fix `rubocop-1.28.1` code issues
 
 ## 0.4.0 (2022-01-14)
 
