@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.name = OnlyofficeGmailHelper::NAME
   s.version = OnlyofficeGmailHelper::VERSION
   s.platform = Gem::Platform::RUBY
-  s.required_ruby_version = '>= 2.5'
+  s.required_ruby_version = '>= 2.7'
   s.authors = ['ONLYOFFICE', 'Pavel Lobashov']
   s.email = %w[shockwavenn@gmail.com]
   s.summary = 'ONLYOFFICE Helper Gem for GMail'
