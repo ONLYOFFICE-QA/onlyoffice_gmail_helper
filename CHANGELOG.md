@@ -10,6 +10,7 @@
 
 * Fix `markdownlint` failure because of old `nodejs` in CI
 * Remove `codeclimate` support since we don't use it any more
+* If there is no config fail on initialize level, not on `require` level
 
 ### Changes
 

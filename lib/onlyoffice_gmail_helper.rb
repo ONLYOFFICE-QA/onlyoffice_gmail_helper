@@ -21,9 +21,9 @@ module OnlyofficeGmailHelper
     # @return [String] default label
     attr_accessor :label
 
-    def initialize(user = EmailAccount::GMAIL_DEFAULT.login, password = EmailAccount::GMAIL_DEFAULT.password, timeout_for_mail = 10, label = nil)
-      @user = user
-      @password = password
+    def initialize(user = nil, password = nil, timeout_for_mail = 10, label = nil)
+      @user = user || EmailAccount.default_account.login
+      @password = password || EmailAccount.default_account.password
       @gmail = Gmail.new(user, password)
       @imap = @gmail.instance_variable_get(:@imap)
       @timeout_for_mail = timeout_for_mail
