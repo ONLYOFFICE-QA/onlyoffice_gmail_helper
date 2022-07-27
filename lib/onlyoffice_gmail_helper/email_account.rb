@@ -26,7 +26,9 @@ module OnlyofficeGmailHelper
       # rubocop:enable Style/FetchEnvVar
     end
 
-    # @return [MailAccount] default account
-    GMAIL_DEFAULT = MailAccount.new(read_defaults[:user], read_defaults[:password])
+    # @return [MailAccount] default account for GMail
+    def self.default_account
+      @default_account ||= MailAccount.new(read_defaults[:user], read_defaults[:password])
+    end
   end
 end
