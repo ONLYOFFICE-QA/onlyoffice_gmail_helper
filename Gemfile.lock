@@ -98,7 +98,7 @@ GEM
       version_gem (~> 1.1)
     strscan (3.0.4)
     timeout (0.3.0)
-    unicode-display_width (2.2.0)
+    unicode-display_width (2.3.0)
     version_gem (1.1.0)
     webrick (1.7.0)
     yard (0.9.28)
