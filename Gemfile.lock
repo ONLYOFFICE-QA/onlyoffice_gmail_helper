@@ -91,7 +91,7 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
-    timeout (0.3.0)
+    timeout (0.3.1)
     unicode-display_width (2.3.0)
     version_gem (1.1.1)
     webrick (1.7.0)
