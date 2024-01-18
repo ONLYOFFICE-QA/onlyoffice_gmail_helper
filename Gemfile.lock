@@ -18,7 +18,7 @@ GEM
     gmail (0.7.1)
       gmail_xoauth (>= 0.3.0)
       mail (>= 2.2.1)
-    gmail_xoauth (0.4.2)
+    gmail_xoauth (0.4.3)
       oauth (>= 0.3.6)
     hashie (5.0.0)
     iniparse (1.5.0)
