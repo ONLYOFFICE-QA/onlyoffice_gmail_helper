@@ -11,6 +11,7 @@
 ### Changes
 
 * Drop support of `ruby-2.7` since it's EOL'ed
+* Fix `rubocop-1.65.0` cop `Gemspec/AddRuntimeDependency`
 
 ## 0.5.0 (2022-07-27)
 
