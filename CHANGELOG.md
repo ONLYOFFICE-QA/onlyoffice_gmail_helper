@@ -6,12 +6,14 @@
 
 * Add `ruby-3.2` in CI
 * Add `ruby-3.3` to CI
+* Add `ruby-3.4` to CI
 * Add dependabot check for GitHub Actions
 
 ### Changes
 
 * Drop support of `ruby-2.7` since it's EOL'ed
 * Fix `rubocop-1.65.0` cop `Gemspec/AddRuntimeDependency`
+* Remove `ruby-3.0` from CI, since it's EOLed
 
 ## 0.5.0 (2022-07-27)
 
