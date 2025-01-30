@@ -48,7 +48,7 @@ GEM
     oauth-tty (1.0.5)
       version_gem (~> 1.1, >= 1.1.1)
     onlyoffice_logger_helper (1.3.0)
-    overcommit (0.64.1)
+    overcommit (0.66.0)
       childprocess (>= 0.6.3, < 6)
       iniparse (~> 1.4)
       rexml (>= 3.3.9)
@@ -126,4 +126,4 @@ DEPENDENCIES
   yard (>= 0.9.20)
 
 BUNDLED WITH
-   2.5.15
+   2.6.3
